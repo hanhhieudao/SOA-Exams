@@ -1,0 +1,238 @@
+% If you want to see what things look like for a handout, remove the
+% comment from the next line.
+\newif\ifHandout%\Handouttrue
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Adjust margins and page layout.
+\addtolength{\topmargin}{-.5in}
+\addtolength{\headsep}{.5in}
+
+\oddsidemargin=.5in
+\evensidemargin=.5in
+\textwidth=5.5in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Load a bunch of packages that extend the basic capabilities of LaTeX
+\usepackage{
+amsmath,% AMS basic math stuff
+amsthm,% AMS theorem defining stuff
+amsfonts,% defines the blackboard bold fonts for \Z, \R, etc
+longtable,% used to create the tcproof environment below
+verbatim,% allows for verbatim output, and also covering up stuff in comments
+xspace,% adds an extra space an the end of some commands
+multicol,% allows multicolumn output
+tikz,% creates the tikzpicture drawing environment
+charter,% changes the default font to charter
+framed,% used to color in the TIscreen environment below
+}
+
+% the next package defines dingbat fonts.  I use dingbat 212 to make a
+% thick arrow somewhat like the "to" arrow that's displayed in TI-83
+% programming.  
+\PassOptionsToPackage{dvipsnames,table}{xcolor}
+
+\usepackage{pifont}
+
+% Makes section headings and cross references act like links
+\usepackage[colorlinks,unicode]{hyperref}
+\usepackage{thmtools}
+\usepackage{xcolor}  % Load after passing options above
+\usepackage{actuarialsymbol}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tcolorbox}  % Comes after xcolor is properly set
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create simple shortcut commands.  Almost everyone who uses LaTeX
+% creates commands like thes.
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+% For some reason basic TeX/LaTeX doesn't define a an lcm command!  So
+% I create one
+\DeclareMathOperator{\lcm}{lcm}
+
+% \cl stands for "class"
+\newcommand{\cl}[1]{[#1]}
+
+% \st stands for "such that", used in set builder notation like so
+% \{x \st x^2 = 4\}
+\newcommand{\st}{\mid}
+
+% Make an equals sign with a question mark over it
+\newcommand{\eq}{\stackrel{?}{=}}
+
+% The next line difines a divides sign with a question mark
+\newcommand{\divq}{\stackrel{?}{|}}
+
+\newcommand{\forwards}{\mbox{``$\Longrightarrow$''}\xspace}
+\newcommand{\backwards}{\mbox{``$\Longleftarrow$''}\xspace}
+
+% this is to highlight words that are being defined and enter.
+\newcommand{\define}[1]{\textbf{#1}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create some slightly more sophisticated custom commands.  New
+% symbols, or tweaking old ones.  
+
+% The next two lines define a reasonable looking not divides sign.
+\DeclareMathSymbol{\nmid}{\mathrel}{AMSb}{"2D}
+\newcommand{\notdiv}{\nmid}
+
+% Make the tilde command wider
+\renewcommand{\tilde}{\widetilde}
+
+% the following two commands change the way the footnote symbol is
+% made to be old fashioned: *, dagger, etc.  
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% This is how I create marks in the text showing where we finished on
+% a given day.  
+\def\endclass#1{\par\noindent\hrulefill\fbox{\tiny This is where we
+    ended on #1}\hrulefill\vskip 5pt plus 1pt\par }
+
+% Now I redefine things to produce the headings I want.
+\pagestyle{headings}
+\makeatletter
+% First I redefine the \today command
+\edef\today{%
+  \the\year/\two@digits{\the\month}/\two@digits{\the\day}}
+% Now I put the date in the heading
+\renewcommand{\@evenhead}{\emph{Financial Mathematics (SOA Exam)} (v.\today)
+    \hfill Hanh Hieu Dao \hfill \thepage}
+\renewcommand{\@oddhead}{(version \today) \hfill \thepage}
+\makeatother
+
+% Redefine the emptyset symbol so it looks nicer
+\DeclareMathSymbol{\varnothing}{\mathord}{AMSb}{"3F}
+\renewcommand{\emptyset}{\varnothing}
+
+
+% If I'm making handouts I (1) sometimes insert a pagebreak so the
+% Example starts at the top of the page, and (2) cover up the
+% solutions (turn them white!)
+\ifHandout
+  \newcommand{\handoutpagebreak}{\newpage}
+  \newenvironment{solution}
+    {\smallskip\par\noindent\emph{Solution: }\color{white}}
+    {}
+\else
+  \newcommand{\handoutpagebreak}{}
+  \newenvironment{solution}
+  {\smallskip\par\noindent\emph{Solution: }}
+  {}
+\fi
+
+\setlist{noitemsep, topsep=2pt}  
+\setlength{\abovedisplayskip}{1pt} % Space before equations
+\setlength{\belowdisplayskip}{2pt}  % Space after equations
+\setlength{\abovedisplayshortskip}{2pt} % Space before short equations (e.g., inline-like)
+\setlength{\belowdisplayshortskip}{2pt} % Space after short equations
+
+
+% The next few commands are for simulating the output of a TI screen.  
+\colorlet{shadecolor}{gray!35}
+\newenvironment{TIscreen} 
+{\begin{center}\tt
+\renewcommand{\in}[1]{##1\\}
+\newcommand{\out}[1]{\mbox{}\hfill##1\\}
+\begin{minipage}{2in}\begin{snugshade}}
+{\end{snugshade}\end{minipage}\end{center}}  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The next page or two of stuff is devoted to creating and
+% manipulating the environments for lemma, proof, example, etc.
+% The first part is pretty simple, and almost everyone has commands
+% like this in every paper, article, book, etc.  
+% 
+% We start with things like lemmas, theorems, etc.
+\definecolor{Periwinkle}{rgb}{0.8, 0.8, 1}
+\definecolor{Violet}{rgb}{0.56, 0, 1}
+
+\colorlet{LightGray}{white!90!Periwinkle}
+\colorlet{LightOrange}{orange!15}
+\colorlet{LightGreen}{green!15}
+\colorlet{LightPurple}{Violet!15}
+
+
+% Now we create things like definitions, examples, comments, etc.  
+\newenvironment{comments}{}{}
+
+\declaretheoremstyle[name=Formula,headpunct={}]{prosty}
+\declaretheorem[style=prosty]{formula}
+\tcolorboxenvironment{formula}{colback=LightGray}
+
+\declaretheoremstyle[name=,headpunct={}, ]{prosty}
+\declaretheorem[style=prosty, numbered=no]{definition}
+\tcolorboxenvironment{definition}{colback=LightOrange}
+
+\declaretheoremstyle[name=Example,]{prcpsty}
+\declaretheorem[style=prcpsty]{example}
+\tcolorboxenvironment{example}{colback=LightGreen}
+
+\declaretheoremstyle[name=Theorem,]{prcpsty}
+\declaretheorem[style=prcpsty]{theorem}
+\tcolorboxenvironment{theorem}{colback=LightPurple}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The stuff that follows is a bit tricky, and is well more than most
+% people do with LaTeX.  The basic idea is that I want to be able to
+% show only examples, or only definitions, or hide only proofs, etc.  
+
+
+\makeatletter
+% the following key values give the set up for hiding certain
+% environemnts. Note that "true" is just a dummy value.  It would work
+% equally well with "foo".  Each one of these redefines the outer
+% environment for an atom to turn the whole thing into a hidden
+% comment.  Note that the environments theorem, example, etc. do not
+% have to be written in any special way for hide and show to work.
+% They get clobbered by hide.  
+  \define@key{hide}{terminology}[true]{\renewenvironment{terminology}{\comment}{\endcomment}}
+  \define@key{hide}{proof}[true]{\renewenvironment{proof}{\comment}{\endcomment}}
+  \define@key{hide}{lemma}[true]{\renewenvironment{lemma}{\comment}{\endcomment}}
+  \define@key{hide}{comments}[true]{\renewenvironment{comments}{\comment}{\endcomment}}  \define@key{hide}{definition}[true]{\renewenvironment{definition}{\comment}{\endcomment}}
+  \define@key{hide}{example}[true]{\renewenvironment{example}{\comment}{\endcomment}}
+% Now this command can be given a comma separated list of names to
+% hide.  Thus, \HideEnvirons{ example, proof} would hide all examples
+% and proofs.
+\newcommand{\HideEnvirons}[1]{\setkeys{hide}{#1}}
+
+
+% The \ShowEnvirons command works like this: if it's argument is foo,
+% it redefines the *hide* family key for foo to do nothing.  Then, it
+% issues a \HideEnvirons command containing a list of all the atom
+% types.  So, everything is hidden *unless* the hide-family key has
+% been redefinied.
+  \define@key{show}{terminology}[true]{\define@key{hide}{terminology}{}}
+  \define@key{show}{proof}[true]{\define@key{hide}{proof}{}}
+  \define@key{show}{lemma}[true]{\define@key{hide}{lemma}{}}
+  \define@key{show}{comments}[true]{\define@key{hide}{comments}{}}
+  \define@key{show}{definition}[true]{\define@key{hide}{definition}{}}
+  \define@key{show}{example}[true]{\define@key{hide}{example}{}}
+% This command can be given a comma separated list of names to show,
+% and only these will be shown.  Thus,
+% \ShowEnvirons{example,definition} will show only examples and definitions.
+\newcommand{\ShowEnvirons}[1]
+{\setkeys{show}{#1}\HideEnvirons{%
+    comments,
+    definition,
+    example,
+    proof,
+    terminology
+  }}
+\makeatother
+
+% Comment out the next line to see the full text
+\ShowEnvirons{definition,terminology, proof, example, comments}
+%------------------------

@@ -1,0 +1,110 @@
+\chapter{Loan}
+
+\section{Debt instruments}
+
+\begin{definition}
+A debt instrument is a contract that requires the borrower to repay principal and usually interest at a future date.
+\end{definition}
+
+\begin{comments}
+    Examples of \textbf{Debt Instruments:}
+    \begin{enumerate}
+        \item Bonds (corporate, government)
+        \item Loans
+    \end{enumerate}
+\end{comments}
+
+\section{Outstanding Balance Calculation for Level Payments}    
+
+\textbf{Notation:}
+\begin{itemize}
+    \item \( I_t \): Interest paid during the \( k \)-th period.
+    \item \( P_t \): Principal (capital) repaid during the \( k \)-th period.
+    \item \( B_t \): Outstanding balance immediately after the \( t \)-th payment.
+    \item \( R_t \): Total payment made during the \( t \)-th period (interest + principal).
+\end{itemize}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{} l c l @{}}
+\toprule
+\textbf{Type} & \textbf{Formula} & \textbf{Interpretation} \\
+\midrule
+Prospective   & \( B_t = R \cdot a_{n - t} \) & Present value of remaining (future) level payments \\
+Retrospective & \( B_t = R \cdot s_t \)       & Accumulated value of past payments \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Loan Equation of Value:}
+You can express the loan’s total value \( L \) using the equation of value:
+
+\[
+L = B_0 = R_1 v + R_2 v^2 + \cdots + R_n v^n
+\]
+
+\section{Loan Amortization (Level/Non-level payments}
+\begin{comments}
+    A loan can be interpreted as an annuity with payments made in regular intervals, each payment consists of two parts:
+\begin{itemize}
+    \item \textbf{Interest on the loan}: A cost for borrowing the money.
+    \item \textbf{Principal}: The amount of the loan that you borrowed.
+\end{itemize}
+
+Over time, interest portion decreases and principal portion increases. Total payments stay the same. 
+\end{comments}
+
+\subsection{Interest portion in period t}
+At any given time, the interest due for the next payment period will depend on the outstanding balance before t-th payment. 
+
+$$I_t = i \cdot B_{t-1} = i \cdot R \cdot a_{\angl{n - t + 1}} =  R \cdot ({1 - v^{n - t + 1}})$$
+
+\subsection{Principal portion in period t}
+\begin{align*}
+P_t &= R - I_t \\
+    &= R - R \cdot (1 - v^{n - t + 1} \\
+    &= R \cdot v^{n - t + 1} \\
+\end{align*}
+
+\begin{comments}
+Only for level payments: 
+\[
+\text{FV of principal } P_t \text{ after } k \text{ periods at interest rate } i = P_t \cdot (1 + i)^k = P_{t+k}
+\]
+
+\end{comments}
+
+\subsection{Balance}
+
+\begin{itemize}
+    \item \textbf{Interest: }Paid to lender (does \textbf{not} reduce balance) 
+    \item \textbf{Principal: }Reduces the loan balance \\
+\end{itemize}
+
+\begin{comments}
+\begin{align*}
+\text{Balance after t-th payment} &=\text{Balance before t-th payment} - \text{Principal repaid at time t} \\
+&=B_{t-1} - P_t
+\end{align*}
+\end{comments}
+
+\begin{comments}
+\begin{align*}
+\text{Balance after t-th payment} &= \text{Balance at time t with interest} - \text{Payment made at time t} \\
+&= B_{t-1}(1+i) - R_t
+\end{align*}
+\end{comments}
+
+\section{Summary}
+\begin{definition}
+\centering
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Component} & \textbf{Formula at Period \( t \)} \\ \hline
+    Total Payment \( R \) & \( R = 1 \) \\ \hline
+    Interest \( I_t \) & \( I_t = 1 - v^{n-t+1} \) \\ \hline
+    Principal Repaid \( P_t \) & \( P_t = v^{n-t+1} \) \\ \hline
+    \hline
+    \end{tabular}
+
+\end{definition}
