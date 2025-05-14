@@ -41,7 +41,9 @@ framed,% used to color in the TIscreen environment below
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{tcolorbox}  % Comes after xcolor is properly set
-
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs} % For \toprule, \midrule, \bottomrule
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Create simple shortcut commands.  Almost everyone who uses LaTeX
@@ -163,7 +165,8 @@ framed,% used to color in the TIscreen environment below
 
 
 % Now we create things like definitions, examples, comments, etc.  
-\newenvironment{comments}{}{}
+\newenvironment{comments}{\par\noindent\ignorespaces}{}
+
 
 \declaretheoremstyle[name=Formula,headpunct={}]{prosty}
 \declaretheorem[style=prosty]{formula}

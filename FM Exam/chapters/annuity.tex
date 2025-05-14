@@ -44,9 +44,9 @@ n total payments, and the effective rate of interest  \textbf{per unit of time} 
 
 \begin{center}
 \begin{tikzpicture}
- \draw[->] (0,0) -- (5.4,0)node[right]{period};
+\draw[->] (0,0) -- (5.4,0)node[right]{period};
 
- \foreach \X in {0,1,2,3} {
+\foreach \X in {0,1,2,3} {
   \ifnum\X=0
     % Just draw label at x=0, no arrow
     \draw (\X,-0.1) node[below]{$\X$};
@@ -54,10 +54,10 @@ n total payments, and the effective rate of interest  \textbf{per unit of time} 
     % For x > 0, draw arrow and value 1
     \draw[thick,-latex] (\X,-0.1) node[below]{$\X$} -- ++(0,0.6) node[above]{$1$};
   \fi}
- \draw[thick,-latex] (4.6,-0.1) node[below]{$n$} -- ++(0,0.6) node[above]{$1$};
- \node at (3.8,0.4) {$\cdots$};
+\draw[thick,-latex] (4.6,-0.1) node[below]{$n$} -- ++(0,0.6) node[above]{$1$};
+\node at (3.8,0.4) {$\cdots$};
   \node[red] at (0,-0.8) {PV};
- \node[blue] at (4.6,-0.8) {FV};
+\node[blue] at (4.6,-0.8) {FV};
 \end{tikzpicture}
 \end{center}
 \begin{comments}
@@ -135,7 +135,7 @@ The future value (value at time n) of the same annuity is:
 \subsubsection{1. Arithmetic Increasing Annuity}
 
 \begin{comments}
-     Let the first payment = \textbf{P}, each following payment increases by \textbf{Q}, and there are total \textbf{n} payments. 
+Let the first payment = \textbf{P}, each following payment increases by \textbf{Q}, and there are total \textbf{n} payments. 
 
 \begin{center}
 \begin{tikzpicture}[xscale=1.2, font=\small] % Wider and smaller font
@@ -232,7 +232,7 @@ FV at time (period) t = n:
 
 \subsubsection{3. Decreasing Annuity}
 \begin{comments}
- When P=n and Q=1, payments become n, n-1, n-2, ..., 1.
+When P=n and Q=1, payments become n, n-1, n-2, ..., 1.
 
     \begin{center}
 \begin{tikzpicture}[xscale=1.2, font=\small]
@@ -311,11 +311,11 @@ When $P = Q = 1$:
 
 
 \begin{table}[]
-    \centering
-    \begin{tabular}{|| c | c | c ||}
-    \hline \hline
-         Annuity &  PV & FV\\
-         \hline \hline
+        \centering
+        \begin{tabular}{|| c | c | c ||}
+        \hline \hline
+          Annuity &  PV & FV\\
+        \hline \hline
         Arithmetic Increasing Annuity &
 $P \cdot a_{\overline{n}|i} + Q \cdot \frac{a_{\overline{n}|i} - n \cdot v^n}{i}$ &
 $P \cdot s_{\overline{n}|i} + Q \cdot \frac{s_{\overline{n}|i} - n}{i}$ \\
@@ -349,7 +349,7 @@ $P \cdot s_{\overline{n}|i} + Q \cdot \frac{s_{\overline{n}|i} - n}{i}$ \\
     \end{itemize}
 \end{comments}
 \begin{comments}
-     Calculate the present value of the \( n \)-period annuity (\( a_n \)) as if payments were starting now. Then discount it back \( m \) periods using \( v^m = (1 + i)^{-m} \).
+Calculate the present value of the \( n \)-period annuity (\( a_n \)) as if payments were starting now. Then discount it back \( m \) periods using \( v^m = (1 + i)^{-m} \).
 \end{comments} \\
 
 %------------------------------------
@@ -362,10 +362,10 @@ $\text{PV} = v^m a_n$
 
 
 \begin{figure}
-    \centering
-    \includegraphics[width=1.0\linewidth]{deferred_annuity.JPG}
-    \caption{Deferred Annuity}
-    \label{fig:enter-label}
+  \centering
+  \includegraphics[width=1.0\linewidth]{images/deferred_annuity.JPG}
+  \caption{Deferred Annuity}
+  \label{fig:enter-label}
 \end{figure}
 
 
@@ -518,7 +518,7 @@ The FV of an annuity-due is:
 
 \begin{align*}
     PV &= v + v^2 (1 + r) + \dots + v^n (1 + k)^{n-1} \\
-   & = v \left[ \frac{1 - \left( \frac{1 + k}{1 + i} \right)^n}{1 - \frac{1 + k}{1 + i}} \right]  = v \left[ \frac{1 - \left( \frac{1 + k}{1 + i} \right)^n}{\frac{i - k}{1 + i}} \right] \\
+    & = v \left[ \frac{1 - \left( \frac{1 + k}{1 + i} \right)^n}{1 - \frac{1 + k}{1 + i}} \right]  = v \left[ \frac{1 - \left( \frac{1 + k}{1 + i} \right)^n}{\frac{i - k}{1 + i}} \right] \\
     &= v \left[ \frac{1 - \left( \frac{1 + k}{1 + i} \right)^n}{v(i - k)} \right] \\
     &=\frac{1 - \left( \frac{1 + k}{1 + i} \right)^n}{i - k}
 \end{align*}
