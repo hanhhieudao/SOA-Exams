@@ -166,7 +166,7 @@ framed,% used to color in the TIscreen environment below
 
 % Now we create things like definitions, examples, comments, etc.  
 \newenvironment{comments}{\par\noindent\ignorespaces}{}
-
+\newenvironment{terminology}{\par\noindent\ignorespaces}{}
 
 \declaretheoremstyle[name=Formula,headpunct={}]{prosty}
 \declaretheorem[style=prosty]{formula}
@@ -203,8 +203,9 @@ framed,% used to color in the TIscreen environment below
 % They get clobbered by hide.  
   \define@key{hide}{terminology}[true]{\renewenvironment{terminology}{\comment}{\endcomment}}
   \define@key{hide}{proof}[true]{\renewenvironment{proof}{\comment}{\endcomment}}
-  \define@key{hide}{lemma}[true]{\renewenvironment{lemma}{\comment}{\endcomment}}
-  \define@key{hide}{comments}[true]{\renewenvironment{comments}{\comment}{\endcomment}}  \define@key{hide}{definition}[true]{\renewenvironment{definition}{\comment}{\endcomment}}
+  \define@key{hide}{solution}[true]{\renewenvironment{lemma}{\comment}{\endcomment}}
+  \define@key{hide}{comments}[true]{\renewenvironment{comments}{\comment}{\endcomment}}  
+  \define@key{hide}{definition}[true]{\renewenvironment{definition}{\comment}{\endcomment}}
   \define@key{hide}{example}[true]{\renewenvironment{example}{\comment}{\endcomment}}
 % Now this command can be given a comma separated list of names to
 % hide.  Thus, \HideEnvirons{ example, proof} would hide all examples
@@ -219,7 +220,7 @@ framed,% used to color in the TIscreen environment below
 % been redefinied.
   \define@key{show}{terminology}[true]{\define@key{hide}{terminology}{}}
   \define@key{show}{proof}[true]{\define@key{hide}{proof}{}}
-  \define@key{show}{lemma}[true]{\define@key{hide}{lemma}{}}
+  \define@key{show}{solution}[true]{\define@key{hide}{solution}{}}
   \define@key{show}{comments}[true]{\define@key{hide}{comments}{}}
   \define@key{show}{definition}[true]{\define@key{hide}{definition}{}}
   \define@key{show}{example}[true]{\define@key{hide}{example}{}}
@@ -232,10 +233,11 @@ framed,% used to color in the TIscreen environment below
     definition,
     example,
     proof,
-    terminology
+    terminology, 
+    solution
   }}
 \makeatother
 
 % Comment out the next line to see the full text
-\ShowEnvirons{definition,terminology, proof, example, comments}
+\ShowEnvirons{definition,terminology, proof, example, comments, solution}
 %------------------------

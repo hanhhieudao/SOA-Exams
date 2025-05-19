@@ -1,0 +1,125 @@
+\chapter{Measures of Interest Rate Sensitivity}
+
+
+\section{Inflation}
+\begin{definition}
+    Inflation = general rise in prices of goods and services over time. It reduces purchasing power of money.
+\end{definition}
+
+\begin{comments}
+    Inflation and Interest Rates: inflation and interest rates move together over time. Investors 
+    demand higher interest to compensate for future inflation. 
+\end{comments}
+
+\begin{formula}
+    Let $\pi$ is the inflation rate. 
+    \[ 1 + i_{\text{real}} = \frac{1 + i_{\text{nominal}}}{1 + \pi} \]
+\end{formula}
+
+%---------------------------
+\subsection{Payments grow with inflation}
+\subsubsection{Present Value}
+\begin{definition}
+    Each future payment grows by constant \textbf{inflation rate}. 
+\end{definition}
+
+\begin{formula} (PV iwth adjusted payments)
+    \[
+PV = R\left[\frac{1+r}{1+i} + \left(\frac{1+r}{1+i}\right)^2 + \cdots + \left(\frac{1+r}{1+i}\right)^n\right]
+    = R(1+r) \cdot \frac{1 - \left(\frac{1+r}{1+i}\right)^n}{i - r}
+\]
+We discount the annuity with \textbf{nominal rate} as payments have been adjusted with inflation rate.
+\end{formula}
+\begin{formula} (PV with ray payments, while inflation exists)
+    \[
+    PV = R\left[\frac{1}{1+i_0} + \frac{1}{(1+i_0)^2} + \cdots + \frac{1}{(1+i_0)^n}\right] = R \cdot a_{\overline{n}|i_0}
+    \]
+
+We discount the annuity with \textbf{real interest rate.}
+\end{formula}
+    
+
+\section*{Summary}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\toprule
+\textbf{Scenario} & \textbf{Formula} & \textbf{When to Use} \\
+\midrule
+Payments grow with inflation & 
+$PV = R(1+r) \cdot \frac{1 - \left(\frac{1+r}{1+i}\right)^n}{i - r}$ & 
+Use nominal rate $i$ \\
+\midrule
+Payments fixed in real terms & 
+$PV = R \cdot a_{\overline{n}|i_0}$ & 
+Use real rate $i_0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{Accumulated Value}
+\begin{formula} (AV in nominal dollars (not adjusted for inflation))
+    \[ \text{AV} = P(1+i_\text{nominal})^n \]
+    This is the raw future value of your investment.
+\end{formula}
+
+\begin{formula} (AV adjusted for inflation)
+    \[ \text{AV} = P (\frac{1+i}{1+r})^n = P(1+i_\text{real}) \]
+    This refects the true purchasing power of your money.
+\end{formula}
+
+%----------------------------
+\section{The Term structure of Interest Rates and Yield Curves}
+\begin{definition}
+    Term structure of Interest rate shows how interest rates depend on the time (term) to maturity. 
+    Generally, longer-term loans/investment results in higher interest rates. This relationship is visualized 
+    in a \textbf{yield curve}. 
+\end{definition}
+
+\begin{comments}
+    Generally — the longer the investment term, the higher the interest rate, because,...
+    \begin{itemize}
+        \item More time = more risk (like inflation, uncertainty, default). 
+        \item Investors want extra return for locking money up longer. 
+        \item So lenders charge higher rates for longer loans.
+    \end{itemize}
+    Extend the table to a continous graph, where y-axis is \textbf{yield} (interest rates/spot rates
+    of risk-free bonds) and x-axis is \textbf{maturity}, we obtain a yield curve. Yield curve can be 
+    upward-sloping (rates expected to rise), flat (all terms have same rate), and inverted (short-term > long-term, a signal of recession).  
+
+\end{comments}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\textbf{Length of investment (years)} & \textbf{Interest rate (Spot rate)} \\
+\midrule
+1 year & 3\% \\
+2 year & 4\% \\
+3 year & 6\% \\
+4 year & 7\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{terminology}
+    \textbf{Yield Curve} is a graph of \textbf{spot rates}. 
+    \begin{itemize}
+        \item \textbf{Tern}: The length of time until an investment/loan matures/ends 
+        \item Term = duration until you get your money back.
+        \item Spot rate = \textbf{current} interest rate you would earn if you invested in a \textbf{risk-free bond} today
+        and held it until maturity. 
+    \end{itemize}
+\end{terminology}
+
+\begin{formula}
+    When spot rates $i_t$ vary by year, NPV is 
+    \[ \text{NPV} = \sum_{t=0}^{n} \frac{c_t}{(1+i_t)^t}\]
+\end{formula}
+
+\begin{terminology}
+    \textbf{Forward rate:} the \textbf{interest rate} agreed on today for borrowing or investing money in 
+    the future. bk.
+\end{terminology}
+
+
