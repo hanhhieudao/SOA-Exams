@@ -1,0 +1,131 @@
+\chapter{Bond}
+
+\section{Bond}
+
+\begin{definition}
+    A \textbf{bond} is a type of debt instrument made by investors to a borrower (government/corporation). 
+    The borrower promises to pay: interest (coupons) and principal (face value) at maturity. 
+\end{definition}
+
+\subsection{Key terms}
+
+\begin{comments}
+    \begin{itemize}
+        \item \textbf{Term}: Time from issue to maturity.
+        
+        \item \textbf{Maturity Date}: Final payment date.
+        \item \textbf{Yield}: Actual return for the investor, depending on the price.
+    \end{itemize}
+\end{comments}
+
+\begin{formula} 
+    Regarding to bond pricing formulas, key notations are as follow: 
+
+    \begin{itemize}
+        \item \textbf{Par Value / Face Value $F$}: Amount repaid at maturity.
+        
+        \item \textbf{Coupon Rate $r$}: Interest rate applied to the face value.
+        
+        \item \textbf{Price $P$}: What the investor pays for the bond.
+        \item \textbf{Redemption Value of Bond $C$}: $ F = C $ until otherwise stated. 
+        \item \textbf{Interest rate per payment period $i$}
+        \item \textbf{Number of coupon payments $n$}
+    \end{itemize}
+
+\end{formula}
+
+%-------------------------------------------
+\section{Bond yield}
+
+\begin{formula}
+    \textbf{(Nominal Yield)} 
+    \[
+        \text{Nominal Yield} = \frac{\text{Annual Coupon}}{\text{Par Value}}
+    \]  
+\end{formula}
+
+\begin{formula}
+    \textbf{(Current Yield)} 
+    \[
+        \text{Current Yield} = \frac{\text{Annual Coupon}}{\text{Bond Price}}
+    \]  
+\end{formula}
+
+\begin{formula}
+    \textbf{(Yield to Maturity (YTM))} is the internal rate of return on all bond payments, based on current price. 
+\end{formula}
+
+%---------------------------------------------
+\section{Bond pricing formula}
+
+\begin{formula} (Bond Price)
+    For a bond with coupons, its price is 
+    \[
+        P(i) = \text{PV of Coupon payments} + \text{PV of Redemption value} = F \cdot r \cdot a_{\angl{n}i} + Cv^{n}
+    \]
+\end{formula}
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------
+\section{Premium/Discount}
+
+\begin{comments}
+    When buying a bond, the purchase price (F) might not equal the redemption value (C).
+    \begin{itemize}
+        \item \textbf{Premium}: Price > Redemption (C) or market rate is \textbf{lower} than coupon rate. 
+        \item \textbf{Discount}: Price < Redemption (C) or market rate is \textbf{higher} than coupon rate. 
+    \end{itemize}
+\end{comments}
+
+\begin{formula}
+    Price of a bond can be calculated using Premium/Discount: 
+    \[
+        P(i) = C + (F \cdot r - C \cdot i) \text{a}_{\angl{n}i}
+    \]
+    where $Fr - Ci$ is the premium or discount $\textbf{per period}$. They are cash flows over $n$ periods and seen as an annuity of coupon payments. 
+    \begin{itemize}
+        \item \textbf{Premium}: $Fr > Ci$
+        \item \textbf{Discount}: $Fr < Ci$
+    \end{itemize}
+\end{formula}
+
+
+
+
+
+
+
+
+
+%---------------------------------------------
+\section{Bond duration}
+\subsection{Par Bond Duration}
+
+\begin{comments}
+    When the bond is sold at par (i.e., when the yield $i=r$), its Macaulay Duration is: 
+\begin{align*}
+\text{MacD} &= \frac{F(r(Ia)_{\angl{n}} + nv^n)}{Fra_{\angl{n}} + Fv^{n}} \\
+            &= \frac{r(Ia)_{\angl{n}} + nv^n}{ra_{\angl{n}} + v^{n}}  \\
+            &= \frac{r(1+i)a_{\overline{n}|i} + (i - r)n v^n}{r + (i - r)v^n}
+\end{align*}
+
+Since $i=r$ (bond sold at par), the equation becomes
+\[
+    \text{MacD} = \frac{r(1+i)a_{\angl{n}i}}{r} = (1+i)a_{\angl{n}i} = \ddot{a}_{\angl{n}i}
+\]
+\end{comments}
+\begin{formula}
+    The Macaulay Duration of a par bond is 
+    \[
+    \text{MacD} = \ddot{a}_{\angl{n}i}
+    \]
+\end{formula}

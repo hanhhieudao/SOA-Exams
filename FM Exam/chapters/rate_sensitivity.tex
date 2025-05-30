@@ -1,6 +1,7 @@
 \chapter{Measures of Interest Rate Sensitivity}
 
 
+
 \section{Inflation}
 \begin{definition}
     Inflation = general rise in prices of goods and services over time. It reduces purchasing power of money.
@@ -39,7 +40,7 @@ We discount the annuity with \textbf{real interest rate.}
 \end{formula}
     
 
-\section*{Summary}
+\subsection{Summary}
 \begin{center}
 \begin{tabular}{|l|l|l|}
 \toprule
@@ -69,22 +70,61 @@ Use real rate $i_0$ \\
 
 %----------------------------
 \section{The Term structure of Interest Rates and Yield Curves}
+\subsection{Term}
 \begin{definition}
-    Term structure of Interest rate shows how interest rates depend on the time (term) to maturity. 
-    Generally, longer-term loans/investment results in higher interest rates. This relationship is visualized 
-    in a \textbf{yield curve}. 
+    \textbf{Term}: The length of time until an investment/loan matures/ends. It is the duration
+until you get your money back.
+\end{definition}
+
+
+
+
+
+
+
+\subsection{Spot rate}
+\begin{definition}
+    \textbf{Spot rate} is the yield to maturity/(single rate of annual return) of a zero-coupon bond/(no cash flows).  
+Spot rate is always based on time zero. It is a rate for one-time future payment.
+    \[ v_t = \frac{1}{(1+s_t)^t} \]
+
+    \begin{itemize}
+        \item $v_t$: discount factor
+        \item $s_t$: spot rate
+    \end{itemize}
 \end{definition}
 
 \begin{comments}
-    Generally — the longer the investment term, the higher the interest rate, because,...
+    Generally — the longer the investment term, the higher the interest rate, because 
     \begin{itemize}
         \item More time = more risk (like inflation, uncertainty, default). 
-        \item Investors want extra return for locking money up longer. 
-        \item So lenders charge higher rates for longer loans.
+        \item Investors want extra return for locking money up longer, hence they charge higher rates for longer loans.
     \end{itemize}
+
+    Key differences between: \textbf{Zero-coupon bond with spot/forward rates} and 
+    \textbf{Annuity using varying spot rates} 
+
+    \begin{tabular}{@{} l l l @{}}
+\toprule
+\textbf{Concept} & \textbf{Zero-Coupon Bond} & \textbf{Annuity with Varying Rates} \\
+\midrule
+Cash Flows & Single payment at end & Multiple payments/cash flows each year \\
+Discounting Method & Compound using forward rates & Discount each payment with spot rates \\
+Formula Used & 
+\( (1 + s_n)^n = \prod_{i=0}^{n} (1 + f_{[i, i+1]}) \) & 
+\( PV = \sum \frac{C_t}{(1 + s_t)^t} \) \\
+Use Case & Zero-coupon bond pricing / yield & Valuing pension plans, loans, etc. \\
+\bottomrule
+\end{tabular}
+
+\end{comments}
+
+\subsection{Yield}
+\begin{comments}
     Extend the table to a continous graph, where y-axis is \textbf{yield} (interest rates/spot rates
     of risk-free bonds) and x-axis is \textbf{maturity}, we obtain a yield curve. Yield curve can be 
-    upward-sloping (rates expected to rise), flat (all terms have same rate), and inverted (short-term > long-term, a signal of recession).  
+    upward-sloping (rates expected to rise), flat (all terms have same rate), and inverted (short-term > long-term, 
+    a signal of recession).  
 
 \end{comments}
 
@@ -102,24 +142,484 @@ Use real rate $i_0$ \\
 \end{tabular}
 \end{table}
 
-\begin{terminology}
-    \textbf{Yield Curve} is a graph of \textbf{spot rates}. 
-    \begin{itemize}
-        \item \textbf{Tern}: The length of time until an investment/loan matures/ends 
-        \item Term = duration until you get your money back.
-        \item Spot rate = \textbf{current} interest rate you would earn if you invested in a \textbf{risk-free bond} today
-        and held it until maturity. 
-    \end{itemize}
-\end{terminology}
+\begin{definition}
+    \textbf{Yield Curve} is a graph of \textbf{spot rates} versus maturity time. 
+\end{definition}
 
+
+\begin{comments}
+    
+\end{comments}
+
+\begin{definition}
+    \textbf{Yield to Maturity: } A \textbf{single average rate} that discounts all cash flows of a bond. 
+    \begin{itemize}
+        \item The bond is held to maturity. 
+        \item The bond does not default. 
+        \item Reinvestment of the bond and all coupons is executed at the original YTM. 
+    \end{itemize}
+\end{definition}
 \begin{formula}
     When spot rates $i_t$ vary by year, NPV is 
     \[ \text{NPV} = \sum_{t=0}^{n} \frac{c_t}{(1+i_t)^t}\]
 \end{formula}
 
-\begin{terminology}
+
+
+
+\subsection{Forward Rate}
+\begin{definition}
     \textbf{Forward rate:} the \textbf{interest rate} agreed on today for borrowing or investing money in 
-    the future. bk.
-\end{terminology}
+    the future from time n to time n+m. It tells what the market expects interest rates to be. 
+
+    \[ v_{[n, m-n]} = \frac{1}{(1+f_{[n, n+m]})^{m-n}}\]
+\end{definition}
+
+\begin{formula} (Connect Spot rate with Forward rates)
+    \begin{itemize}
+        \item Spot Rate (s): Set by the current market — changes daily with supply/demand. 
+        \item Forward Rate (f): Calculated from spot rates. 
+    \end{itemize}
+
+    \[
+        (1+s_n)^n \dot (1+f_{[n, n+m]})^m = (1+s_{n+m})^{n+m}
+    \]
+    \[
+        (1 + s_{[0,n]})^n = (1 + f_{[0,1]}) \cdot (1 + f_{[1,2]}) \dots (1 + f_{[n-1,n]})
+    \]
+\end{formula}
+
+
+%--------------------------------------------------
+\section{Macaulay and Modified Durations}
+\begin{comments}
+    Why \textbf{Duration} matters? \\
+    - Duration measures the sensitivity of a bond's price to changes in interest rates. \\
+    - Duration reflects the timing of cash flowe (i.e. when you'll get your money back). \\
+\end{comments}
+
+\begin{comments}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Types of Duration} & \textbf{Definition} & \textbf{Formula} \\
+\midrule
+Term to Maturity & Time until final payment (not very useful with coupons). & --- \\[1ex]
+Equated Time & Weighted average of payment times (weights = cash flows). &
+
+$\bar{t} = \frac{\sum t R_t}{\sum R_t}$ \\
+Macaulay Duration & Weighted average of present values of payments. &
+$d = \frac{\sum t \nu^t R_t}{\sum \nu^t R_t}$ \\
+Modified Duration & Measures price sensitivity to interest changes. &
+$\text{ModDur} = \frac{d}{1 + i}$ \\
+\bottomrule
+\end{tabular}
+\end{comments}
+
+\subsection{Average term-to-maturity}
+
+\begin{definition}
+    Average Term-to-Maturity: "On average, when do I receive my money back?"
+\end{definition}
+
+\begin{comments}
+    Setup: For zero-coupon bond, there is only one payment (at maturity). It means shorter maturity
+    has faster cash back. But for coupon bons with multiple cash flows over time, term-to-maturity
+    ignores earlier coupon payments. Let's say you're paid \$100 in year 1 (coupon), \$200 in year 2 (coupon), and \$700 (final coupon + principal) in year 3. 
+    The average term-to-maturity might be around 2.6 years - it tells on average, you get back total \$1000, not just 
+    \$700 in year 3. 
+\end{comments}
+
+\begin{formula}
+
+If a bond pays cash flows \( C_0, C_1, \dots, C_n \) at times \( t_0, t_1, \dots, t_n \), then the \textbf{Equated Time} is given by:
+
+\[
+\text{Equated Time} = \frac{\sum_{i=0}^{n} C_i \cdot t_i}{\sum_{i=0}^{n} C_i}
+\]
+
+It tells how quickly your investment is returned, on average. 
+\end{formula}
+
+
+
+%--------------------------------
+\subsection{Macaulay Duration}
+\begin{definition}
+    It improves the upon equated time by using \textbf{present values} instead of 
+    just raw cash flows. Each cash flow is now discounted to present, thus the weighted 
+    average time of cash flows is more precise.
+\end{definition}
+
+\begin{formula}
+The \textbf{Macaulay Duration} \( MacD \) is given by:
+
+\[
+MacD(i) = \frac{\sum_{t=0}^{n} t \cdot \nu^t R_t}{\sum_{t=0}^{n} \nu^t R_t}
+\]
+
+\begin{itemize}
+    \item \( R_t \) be the cash flow at time \( t \) 
+    \item \( \nu^t = \frac{1}{(1 + i)^t} \) is the discount factor at time \( t \)
+    \item \( i \) is the effective rate of interest per period.
+\end{itemize}
+
+Note that duration depends on $i$. When $i$ = 0, the MacD is equal to the equated time formula. 
+When there is only 1 future payment, duration is equal to time of payment (MadD = t). 
+
+\end{formula}
+
+\subsection{Macaulay Duration and Cauchy-Schwarz Inequality}
+\begin{comments}
+
+Recall the Macaulay duration:
+\[
+d = \frac{\sum_{t=0}^{n} t \cdot \nu^t R_t}{\sum_{t=0}^{n} \nu^t R_t}, \quad \text{where } \nu^t = \frac{1}{(1+i)^t}
+\]
+
+By Cauchy-Schwarz inequality, we see that
+
+\[
+\frac{d}{di} MacD(i) < 0
+\]
+
+So, Macaulay duration decreases as the interest rate increases.
+\end{comments}
+
+
+
+
+
+
+
+
+
+
+
+%--------------------------------
+
+\section{Modified Duration (Volatility)}
+
+\begin{definition} (Modified Duration)
+    Measures how sensitive a \textbf{bond’s price} is to a small change in its \textbf{yield-to-maturity (YTM)}. 
+    As yield rises, price falls, and vice versa - inverse relationship. 
+\end{definition}
+
+\begin{comments}
+    Setup: \\
+
+    The price of a bond is the present value of its cash flows:
+    \[
+            P(i) = \sum_{t=0}^{n} \frac{C_t}{(1+i)^t}
+    \]  
+
+    Take the derivative of P(i) w.t. $i$ (yield rate). This is the \textbf{rate of change}
+    of bond price when $i$ changes: 
+
+    \[
+            \frac{dP(i)}{di}
+    \]
+
+    We want to express the percentage change in price of bond by dividing the derivative 
+    by the price, with the minus sign as price drops when $i$ increases. We obtained \textbf{volatility}
+    which tells how sensitive the PV of bond's price to interest rate changes. 
+    \[
+        \text{Volatility} = - \frac{1}{P(i)} \cdot \frac{dP(i)}{di} = -\frac{P'(i)}{P(i)}
+    \]
+
+    Real world meaning: if Volatility = 5, then if $i$ increases by 1\% bond price drops about 5\%. 
+    It's a linear approximation of the price-yield curve i.e. the \% change of $P(i)$. \\
+
+    The standard derivative identity is: 
+    \[
+        \frac{d}{di}[lnP(i)] = \frac{P'(i)}{P(i)}
+    \]
+
+    Thus, volatility, denoted by $\bar{v}$, becomes: 
+    \[
+        \bar{v} = - \frac{d}{di}[lnP(i)] = - \frac{P'(i)}{P(i)}
+    \]
+
+    Volatility is often called \textbf{modified duration}. Now we derive $P(i)$ by taking
+    the derivative with respect to $i$ : 
+
+    \[
+    P'(i) = \frac{d}{di} \left[ \sum_{t=0}^n \frac{R_t}{(1+i)^t} \right] = - \sum_{t=0}^n t(1+i)^{-t-1} R_t = - \sum_{t=1}^{n} \frac{t \cdot R_t}{(1+i)^{t+1}}
+    \]
+
+    Then plug into the volatility formula:
+
+    \[
+    \bar{v} = -\frac{P'(i)}{P(i)} = \frac{\sum_{t=0}^{n} \frac{t \cdot R_t}{(1+i)^{t+1}}}{\sum_{t=0}^{n} \frac{R_t}{(1+i)^{t}}} = \frac{\sum_{t=0}^{n} t \cdot v^{t+1} \cdot R_t} {\sum_{t=0}^{n} t \cdot v^{t} \cdot R_t}
+    \]
+
+    Express $\bar{v}$ in terms of MacD: 
+    \[ \bar{v} =  \frac{\sum_{t=0}^{n} t \cdot v^{t+1} \cdot R_t} {\sum_{t=0}^{n} t \cdot v^{t} \cdot R_t} 
+    = v \cdot  \frac{\sum_{t=0}^{n} t \cdot v^{t} \cdot R_t} {\sum_{t=0}^{n} t \cdot v^{t} \cdot R_t} = \text{MacD} \cdot v = \frac{\text{MacD}}{1+i}
+    \]
+\end{comments}
+    
+
+\begin{formula}
+    \[ \text{Modified Duration} = \text{Macaulay Duration} \cdot v = \frac{\sum_{t=0}^{n} t \cdot v^{t+1} \cdot R_t} {\sum_{t=0}^{n} t \cdot v^{t} \cdot R_t}
+    \]
+
+    Remark: we assume that cash flows (payments) are fixed - they do not change with the interest rate changes.
+\end{formula}
+
+
+\section{MacaulayD vs. ModifiedD}
+
+
+\begin{table}
+\centering
+\caption{Comparison of Macaulay Duration and Modified Duration}
+\begin{tabular}{p{2.5cm}p{5cm}p{5cm}}
+\toprule
+\textbf{Feature} & \textbf{Macaulay Duration} & \textbf{Modified Duration} \\
+\midrule
+Definition & Weighted average time until all payments in a series are made & Sensitivity of bond price to interest rate changes \\
+
+Formula & 
+$\text{MacD} = -\frac{P'(\delta)}{P(\delta)}$ & 
+$\text{ModD} = -\frac{P'(i)}{P(i)} = \text{MacD} \cdot (1+i) $ \\[10pt]
+
+Units & Time (usually in years) & Percentage change per 1\% interest rate change \\
+
+Interpretation & ``When'' you get your money back (on average) & ``How much'' the price changes when interest changes \\
+
+Rate sensitivity? & Indirectly & Directly \\
+
+Dependence on Interest Rate & No (once cash flows are fixed) & Yes (through denominator $1 + i$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{comments}
+    Interpretation: 
+    \begin{itemize}
+        \item $\frac{P'(i)}{P(i)}$ = change in PV per unit change in $i$. (in percentage)
+        \item $\frac{P'(\delta)}{P(\delta)}$ = cheng in PV per unit change in $\delta$. (in time)
+    \end{itemize}
+\end{comments}
+%----------------------------------
+
+\section{Passage of Time}
+\begin{definition}
+    As time passes, the cash flows are getting closer. So naturally, the duration decreases. 
+\end{definition}
+
+\subsection{Macaulay Duration} (Passage of Time)
+\begin{formula}
+    \[
+        \text{MacD}_{new} = \text{MacD}_{old} - (t_1 - t_0)
+    \]
+\end{formula}
+
+MacD changes over time, as cash flows are getting closer. The difference between these 
+two $\text{MacD}_{old}$ and $\text{MacD}_{new}$ is just the time has passed $(t_1) - t_0$. 
+
+
+\subsection{Modified Duration} (Passage of Time)
+
+\begin{comments}
+    Convert $\text{ModD}_{\text{new}} = \text{MacD}_{\text{new}} \cdot v = [\text{MacD}_{old} - (t_1 - t_0)] \cdot v = \text{ModD}_{\text{old}} - v(t_1 - t_0)$
+\end{comments}
+\begin{formula}
+    \[
+    \text{ModD}_{\text{new}} = \text{ModD}_{\text{old}} - v(t_1 - t_0)
+    \]
+\end{formula}
+
+
+
+%--------------------------------
+\section{Convexity}
+
+\begin{comments}
+    \begin{itemize}
+        \item  \textbf{Duration} gives a linear approximation of how bond price changes with interest rates (yield). 
+        \item  \textbf{Convexity} gives a curvature of how bond price (non-linear) changes with interest rates (yield). 
+    \end{itemize}
+    In other words, convexity measures the rate of change of the volatility with respect to interest changes. 
+    High convexity bonds: Lose less when yields go up, and gain more when yields go down.
+\end{comments}
+
+\begin{comments}
+    Factors that increase convexity: 
+    \begin{itemize}
+        \item Maturity
+        \item Coupon rate
+        \item YTM
+        \item Cash flow spread
+    \end{itemize}
+\end{comments}
+
+\pgfplotsset{compat=1.18}
+
+    \begin{tikzpicture}
+\begin{axis}[%
+    axis lines = center,
+    xlabel = {Yield},
+    ylabel = {Bond Price},
+    label style = {anchor=north east},
+    xmin = 0, xmax=5,     ymin=0, ymax=1,
+    ticks = none,
+    enlargelimits=false,
+    clip=false,
+%
+    domain = 1:4,
+    samples = 50,
+    no marks
+            ]
+\addplot    {1/(1.75*x)};
+
+\end{axis}
+    \end{tikzpicture}
+
+
+
+\subsection{Macaulay Convexity}
+
+\begin{definition}
+    \textbf{Macaulay convexity} is the weighted average of the squares of the time $t^2$, using 
+    present values as weights. 
+
+    \[
+        \text{MacC} = \frac{P''(\delta)}{P(\delta)} = \sum_{t \geq 0}^{\infty} \left( \frac{C_t(1 + i)^{-t}}{P(i)} \right) t^2 = \frac{\sum_{t=0}^{n} t^2 \cdot v^t \cdot \text{CF}_{t}}{\sum_{t=0}^{n} v^t \cdot \text{CF}_{t}}
+    \]
+
+\end{definition}
+
+
+
+\subsection{Modified Convexity}
+
+\begin{formula} (Modified Convexity)
+    \[ \text{Convexity} = \frac{P''(i)}{P(i)} = \frac{\sum_{t=0}^{n} t \cdot (t+1) \cdot v^{t+2} \cdot R_t} {\sum_{t=0}^{n} v^{t} \cdot R_t}\] 
+
+    where 
+    \begin{itemize}
+        \item $P(i)$ is the PV of net cash flows at interest $i$
+        \item $P''(i)$ tells how fast duration itself changes (i.e., rate of curvature)
+    \end{itemize}
+\end{formula}
+
+    
+
+
+
+
+
+%---------------------------------
+
+\section{Approximation of Bond Price}
+\begin{comments}
+    We want to approximate how the bond price changes when the interest rate changes slightly from 
+$i$ to $\Delta i $. 
+\[
+    P(i + \Delta i) \approx P(i) + \Delta i \cdot P'(i)
+\]
+
+To get percentage change, divide both sides by P(i): 
+\[
+\frac{P(i + \Delta i)}{P(i)} \approx 1 + \Delta i \cdot \frac{P'(i)}{P(i)} = 1 - \Delta i \cdot \text{ModD}
+\]
+The approximation is: 
+\[ P(i + \Delta i) \approx P(i) \cdot [1 - \text{ModD} \cdot \Delta i ]\]
+\end{comments}
+
+\begin{formula} (1st-order Modified Approximation)
+    \[
+        P(i_n) \approx P(i_0) \cdot [1 - (i_n - i_0)(\text{ModD})]
+    \]
+
+    \[
+        \Delta{P} = -\Delta{i} \cdot \text{ModD}
+    \]
+\end{formula}
+
+\begin{comments}
+
+    Now, we want the approximation in terms of MacD. Start with bond price as the sum of discounted cash flows: 
+    \[
+        P(i) = \sum_{t=0}^{n} \frac{C_t}{(1+i)^t}
+    \]
+
+    We approximate the bond price as a single lump-sum (K) as total amount of cash flows at average time which 
+    is MacD: 
+    \[
+        P(i) \approx \frac{K}{(1+i)^{\text{MacD}}}
+    \]
+
+    When $i$ changes, $P(i)$ also changes. We take the ratio of new price to old price: 
+    \[ 
+        \frac{P(i_new)}{P(i_old)} \approx \frac{(1+i_{old})^{\text{MacD}}}{(1+i_{new})^{\text{MacD}}} = (\frac{1+i_{old}}{1+i_{new}})^{\text{MacD}}
+    \]
+
+\end{comments}
+
+\begin{formula} (1st-order Macaulay Approximation)
+    \[
+        P(i_{\text{new}}) \approx P(i_{\text{old}}) \cdot (\frac{1+i_{old}}{1+i_{new}})^{\text{MacD}}
+    \]
+\end{formula}
+
+
+%----------------------
+\section{Bond Duration}
+
+\begin{definition}
+    \textbf{Bond duration} is a measure of the bond's Sensitivity to interest changes. 
+\end{definition}
+
+\begin{formula}
+    For a bond of n annual coupons, face amount F, coupon rate r, and annual yield rate $i$: 
+    \begin{itemize}
+        \item Annuity-immediate: F $\cdot$ r
+        \item Redemption value at maturity date t = n: F = C 
+    \end{itemize}
+
+    \[
+        \text{MacD} = \frac{\sum_{t=1}^{n} t \cdot PV(\text{CF}_t)}{P}
+    \]
+
+    where 
+    \begin{itemize}
+        \item $PV(CF_{t})$ is the PV of the cash flow at time $t$ (coupon or principal)
+        \item $P$ is the total PV (price) of the bond
+    \end{itemize}
+\end{formula}
+
+
+
+
+
+
+
+
+
+
+
+%----------------------
+\section{Note}
+\begin{enumerate}
+    \item Bond
+        \begin{itemize}
+            \item Buying a bond = outflow.
+            \item Coupon payments = inflow.
+            \item Maturity value = inflow.
+        \end{itemize}
+    \item Annuity
+        \begin{itemize}
+            \item Saving: regular payments = outflow. 
+        \end{itemize}
+    \item Loan
+        \begin{itemize}
+            \item Taking the loan = inflow.
+            \item Loan repayments = outflow.
+        \end{itemize}
+\end{enumerate}
+
 
 

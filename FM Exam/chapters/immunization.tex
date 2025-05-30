@@ -1,0 +1,85 @@
+\chapter{Immunization}
+
+\section{Assets and liabilities}
+
+\begin{comments}
+Cash flows: 
+    \begin{itemize}
+        \item Asset inflows: $A_0, A_1, ... , A_n$
+        \item liability outflows: $L_0, L_1, ... , L_n$
+        \item At each time $t$, $R_t = A_t - L_t$ = Net cash flow at time $t$
+    \end{itemize} 
+\end{comments}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Redington Immunization}
+
+\begin{definition}
+    Redington immunization is a strategy to \textbf{protect a portfolio} (assets vs liabilities) 
+    from small changes in interest rates. 
+\end{definition}
+
+
+\begin{comments}
+
+    Let $P(i)$ be the present value of all the net cash flows at interest rate $i$. Since we 
+    want the value of portfolio to \textbf{not drop} when $i$ changes slightly, that means 
+    $P(i)$ should be at a minimum at the current target rate $i_0$. 
+\begin{table}[htbp]
+\centering
+\caption{3 Conditions for Immunization}
+\begin{tabular}{lll}
+\toprule
+\textbf{Condition} & \textbf{Meaning} & \textbf{Purpose} \\
+\midrule
+$P(i) = 0$ & PV of assets = PV of liabilities & Start balanced \\
+$P'(i) = 0$ & Modified durations match & No change for small $\Delta i$ \\
+$P''(i) > 0$ & Positive convexity & Changes in rate increase value \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\end{comments}
+
+
+
+%------------------------
+\section{Full Immunization}
+
+\begin{definition}
+    (Full immunization) Full immunization protects a portfolio from \textbf{any} interest rate changes, 
+    not just small changes. 
+\end{definition}
+
+\begin{formula}
+    Full Immunization Conditions at $i = i_0$: 
+    \begin{enumerate}
+        \item $PV_{A}(i_0) = PV_{L}(i_0)$ or PV of assets equals to PV of liabilities
+        \item $PV_{A}'(i_0) = PV_{L}'(i_0)$ or $\text{ModD}_{A}(i_0) = \text{ModD}_{L}(i_0)$
+        \item $PV_{A}''(i_0) \> PV_{L}''(i_0)$ or $\text{ModC}_{A}(i_0) = \text{ModC}_{L}(i_0)$
+    \end{enumerate}
+\end{formula}
+
+\begin{comments}
+    The 3rd condition is the \textbf{timing condition}, which means that there has to be 
+    asset cash flow \textbf{before and after} each liability cash flow. It helps to reduce 
+    interest risk: no matter how interest rates move, your total asset value will always be 
+    enough to cover the liability. 
+\end{comments}

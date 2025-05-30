@@ -1,0 +1,35 @@
+\chapter{Portfolio}
+
+\section{Duration of Portfolio}
+
+\subsection{Modified duration of Portfolio}
+
+\begin{comments}
+    Given a portfolio with \textbf{n bonds}, each bond $k$ has price $P_k(i)$ and 
+    \textbf{Modified duration $v_k$}. Total portfolio value is 
+    \[
+        P(i) = P_1(i) + P_2(i) + \dots + P_n(i)
+    \]  
+\end{comments}
+
+\begin{formula} 
+    The Modified duration of the portfolio is 
+    \[
+        \text{MacD}_{\text{Portfolio}} = \frac{P_1(i)}{P(i)} v_1 + \frac{P_2(i)}{P(i)} v_2 + \cdots + \frac{P_n(i)}{P(i)} v_n = \frac{P_1v_1 + P_2v_2 + \dots + P_nv_n}{P_{\text{total}}}
+    \]
+
+    \[
+        \text{MacD}_{\text{Portfolio}} = \sum_{k=1}^n \left( \frac{P_k(i)}{P(i)} \cdot v_k \right)
+    \]
+    It’s the weighted average of each bond’s modified duration, using current price as weight.
+
+\end{formula}
+
+\subsection{Macaulay duration of Portfolio}
+
+\begin{formula}
+    Macauly duration of a portfolio is 
+    \[
+    \text{MacD}_{\text{Portfolio}} = \frac{\sum_{0}^{n} (t \cdot \text{PV of cash flow at time t})}{\text{Total present value of the portfolio}}
+    \]
+\end{formula}

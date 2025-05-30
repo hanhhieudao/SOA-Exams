@@ -407,7 +407,7 @@ Note: those expressions are for convinient calculation.
     An annuity has an interest that can vary in each period. Let $i_k$ be the interest rate from time k-1 to k. 
 \end{definition}
 
-\subsection{Rate $i_k$ is applied for period k (date of payments matter}
+\subsection{Rate $i_k$ is applied for period k (date depends on calender year)}
 \begin{comments}
     Starting from when the 1st payment made at time 0, up to time $k^{th}$ or later, the future payments are discounted/accumulated using \textbf{all previous rate} $i_1, i_2, i_3,...,i_k$. \\
 \end{comments}
@@ -432,11 +432,12 @@ Note: those expressions are for convinient calculation.
 \end{comments}
 
 
-\subsection{Rate $i_k$ is applied for period k and before/later (date of payment does not matter)}
+\subsection{Rate $i_k$ is applied for period k and before/later (rate depends on deposit time)}
 
 \begin{comments}
     Regardless of when the payments are made, any payments in the period $k$ is discounted using only rate $i_k$. 
-    The rate $i_k$ is the effective rate for period $i\leq k$ (PV) and $i\ge k$. 
+    The rate $i_k$ is the effective rate for period $i\leq k$ (PV) and $i\ge k$.  Intuition: The rate depends on 
+    when you invest - it locks in the rate. 
 \end{comments}
 
 
