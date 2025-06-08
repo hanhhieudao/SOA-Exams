@@ -22,13 +22,13 @@
     Regarding to bond pricing formulas, key notations are as follow: 
 
     \begin{itemize}
-        \item \textbf{Par Value / Face Value $F$}: Amount repaid at maturity.
+        \item \textbf{Par Value / Face Value $F$}: Original issue price of the bond which does not change over time. 
         
-        \item \textbf{Coupon Rate $r$}: Interest rate applied to the face value.
+        \item \textbf{Coupon Rate $r$}: Interest rate applied to the face value and is set by issuer (fixed). 
         
         \item \textbf{Price $P$}: What the investor pays for the bond.
-        \item \textbf{Redemption Value of Bond $C$}: $ F = C $ until otherwise stated. 
-        \item \textbf{Interest rate per payment period $i$}
+        \item \textbf{Redemption Value of Bond $C$}: $ F = C $ until otherwise stated. $C$ is the amount the bondholder gets at maturity. 
+        \item \textbf{Interest rate per payment period $i$}: Fluctuates based on market. 
         \item \textbf{Number of coupon payments $n$}
     \end{itemize}
 
@@ -36,6 +36,17 @@
 
 %-------------------------------------------
 \section{Bond yield}
+
+\begin{definition}
+    \textbf{Bond Yield/Yield to Maturity (YTM)} is the rate of return $i$ you'll earn if you hold the bond to maturity, 
+    assuming all coupons are reinvested at the same rate. It is expressed as percentage ($\%$). Components of YTM: 
+    \begin{enumerate}
+        \item Current bond price $P$
+        \item Coupon payments $Fr$
+        \item Time to maturity $n$
+        \item Face Value/Par value $F$
+    \end{enumerate}
+\end{definition}
 
 \begin{formula}
     \textbf{(Nominal Yield)} 
@@ -52,7 +63,7 @@
 \end{formula}
 
 \begin{formula}
-    \textbf{(Yield to Maturity (YTM))} is the internal rate of return on all bond payments, based on current price. 
+    \textbf{(Yield to Maturity (YTM))} is the effective return based on what the bond costs today. 
 \end{formula}
 
 %---------------------------------------------
@@ -79,11 +90,32 @@
 \section{Premium/Discount}
 
 \begin{comments}
-    When buying a bond, the purchase price (F) might not equal the redemption value (C).
+    Bonds dont always trade at \textbf{par value} (i.e. $P$ is not always equal to $F$). This is because
+    coupon rate $r$ is different from (market) yield rate/YTM $i$. In addition, price of bond $P$ is 
+    dependent on market yield $i$. 
     \begin{itemize}
-        \item \textbf{Premium}: Price > Redemption (C) or market rate is \textbf{lower} than coupon rate. 
-        \item \textbf{Discount}: Price < Redemption (C) or market rate is \textbf{higher} than coupon rate. 
+        \item If $r = i$ or $Fr = Ci$, bond is sold at par. 
+        \item If $r > i$ or $Fr > Ci$, bond is sold at a premium. 
+        \item If $r < i$ or $Fr < Ci$, bond is issed at a discount. 
     \end{itemize}
+    Note that $F = C$ by default. 
+\end{comments}
+
+
+\begin{comments}
+    If $r < i$, the bond is less attractive to investors. So the issuer must lower the price to make it appealing and the bond is sold at discount. 
+    Similarly, if $r > i$, the issuer will raise the price as investors are willing to pay higher price for the bond.
+
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Condition} & \textbf{Price Compared to \( C \)} & \textbf{Called} \\
+    \hline
+    \( r < i \) & \( P < C(=F) \) & \textbf{Discount bond} \\
+    \( r = i \) & \( P = C(=F) \) & \textbf{Par} \\
+    \( r > i \) & \( P > C(=F) \) & \textbf{Premium bond} \\
+    \hline
+    \end{tabular}
+
 \end{comments}
 
 \begin{formula}
@@ -91,11 +123,14 @@
     \[
         P(i) = C + (F \cdot r - C \cdot i) \text{a}_{\angl{n}i}
     \]
-    where $Fr - Ci$ is the premium or discount $\textbf{per period}$. They are cash flows over $n$ periods and seen as an annuity of coupon payments. 
+    where $Fr - Ci$ is the premium or discount $\textbf{per period}$. They are cash flows over $n$ periods and 
+    seen as an annuity of coupon payments. 
     \begin{itemize}
-        \item \textbf{Premium}: $Fr > Ci$
-        \item \textbf{Discount}: $Fr < Ci$
+        \item \textbf{Premium}: $P-C = (Fr-Ci)a_{\angl{n}i}$
+        \item \textbf{Discount}: $C-P = (Ci-Fr)a_{\angl{n}i}$
     \end{itemize}
+
+    Note that $Fr$ is the coupon payment, and $Ci$ is the market interest payment. 
 \end{formula}
 
 

@@ -1,0 +1,146 @@
+\chapter{Interest Theory}
+%-------------------------------------------------------
+\section{Amount and Accumulation Functions}
+
+\begin{definition}
+    \textbf{Amount function} $A(t)$ refers to value of the investment at time t. 
+\end{definition}
+
+\begin{definition}
+    \textbf{Accumulation function} $a(t)$ refers to value of \$1, which was invested at time 0, at time t. 
+\end{definition}
+
+\begin{formula}
+    relationship between A(t) and a(t) is 
+    \[
+        A(t) = A(0) \cdot a(t)
+    \]  
+    where 
+    \begin{itemize}
+        \item A(0) is money you invested at time 0. 
+        \item a(t)  tells how much \textbf{each dollar} grows to by time t. 
+    \end{itemize}
+\end{formula}
+
+
+
+
+
+
+
+
+
+
+
+%-------------------------------------------------------
+\section{Force of Interest}
+
+\begin{definition}
+    The \textbf{force of interest}, denoted by  $\delta$, measures how fast monet grows in a particular instant in time.
+    By definition, the \textbf{force of interest} at time t, denoted by  $\delta(t)$, is: 
+    \[
+            \delta(t) = \frac{A'(t)}{A(t)}
+    \]
+
+    or it is also called as \textbf{instantaneous rate of growth} of the investment. 
+\end{definition}
+
+\subsection{Constant Force of Interest}
+\begin{formula}
+    When $\delta$ is constant, then $\delta(t)$ = $\delta$. 
+    Continuous compounding is 
+    \[
+        A(t) = A(0) \cdot e^{\delta t}
+    \]
+\end{formula}
+
+\begin{formula}
+    Effective interest rate and force of interest:
+    \[
+        i = e^{\delta} - 1   
+    \]
+
+    and 
+    \[
+        \delta = \text{ln}(1+i)
+    \]
+\end{formula}
+
+%-------------------------------
+\section{Present value}
+
+\subsection{Accumulation function with compound and simple interests}
+\begin{definition}
+    With \textbf{compound interest}, the accumulation function is 
+    \[
+        a(t) = (1+i)^t
+    \]  
+    Reminds that $a(t)$ tells how \$1 grows over t periods at (compound) interest rate $i$. 
+\end{definition}
+
+\begin{definition}
+    With \textbf{simple interest}, the accumulation function is 
+    \[
+        a(t) = 1+it
+    \]  
+    Reminds that $a(t)$ tells how \$1 grows over t periods at (simple) interest rate $i$. 
+\end{definition}
+
+
+
+\subsection{Discounting}
+
+\begin{comments}
+    \begin{enumerate}
+        \item \textbf{Discounting} What is \$1 in future worth today? $\rightarrow (1+i)^t$ after t periods
+        \item \textbf{Accumulation} What does \$1 today grow to in future? $\rightarrow \frac{1}{(1+i)^t}$ after t periods
+    \end{enumerate}
+\end{comments}
+
+\subsection{Discount factor}
+
+\begin{definition}
+    \textbf{Discount factor} converts future money into present value. For $t$ periods, 
+    the discount factor is 
+    \[
+        v^t = \frac{1}{(1+i)^t}
+    \]  
+
+    Discount factor during nth period is
+
+    \[
+    (1+i_n)^{-1} = \frac{A(n-1)}{A(n)}
+    \]
+\end{definition}
+
+
+\subsection{Present Value}
+
+\begin{definition}
+    Present Value with compound interest: 
+    \[
+        \text{PV} = \frac{\text{FV}}{(1+i)^{t}} = \text{FV} \cdot v^t
+    \]  
+\end{definition}
+   
+
+\begin{definition}
+    Present Value with compound interest and cash flows: 
+    \[
+        \text{PV}_{t=0} = \sum_{k=1}^{n} C_k v(t_k)
+    \]
+\end{definition}
+
+%---------------------------
+\section{Future Value}
+\begin{definition}
+    With cash flows $C_1, C_2, \dots, C_n$ received at times $t_1, t_2, \dots, t_n$, then
+    \[
+        \text{FV}_{t=n} = \sum_{k=1}^{n} C_k a(t_k)
+    \]
+    \begin{itemize}
+        \item $C_k$: cash flow received at time $t_k$
+        \item $a(t_k)$: accumulation factor from time $t_k$ to the final time $t=n$
+        \item $\text{FV}_{t=n}$: future value at time $t=n$
+    \end{itemize}
+\end{definition}

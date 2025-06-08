@@ -1,4 +1,4 @@
-\chapter{Rate of return of an Investment}
+\chapter{Portfolio Performance}
 
 \section{Discounted Cash Flow Technique}
 
@@ -192,7 +192,7 @@ Total Accumulated Value = 1 + i * $s_{\angl{n}j}$
 Special case: $i = j$, then AV = $(1+i)^n$
 \end{formula}
 
-%-----------------------------------------
+%-------------------------------------------
 \subsection{Annuity + Interest reinvested}
 \subsubsection{Annuity-immediate}
 
@@ -331,9 +331,22 @@ AV = n + i(I_s)_{\angl{n}j} = n + i[\frac{s_{\angl{n+1}j} - (n+1)}{j}] \\
 \end{table}
 
 \begin{definition}
-    (Dollar-weighted rate of interest) The \textbf{interest rate} $i$ is the average rate of how fast the money grew during a period, based on all the 
-    deposits, withdrawals, and interest earned ("dollar-weighted"). 
+    The \textbf{dollar-weighted interest rate} $i$ is the average rate of how fast the money grew during a period, 
+    including the \textbf{timing and size of money in/out}("dollar-weighted"). It measures how 
+    well \textbf{you} did as an \textbf{investor}. 
+
+    \[ i \approx \frac{I}{A + \sum_{0\leq t \leq1}^{} c_t (1-t)} = \frac{\text{Interest earned}}{\text{Exposure}}\]
+    The approximation is good when each contribution $c_t$ is small compared to the amount $A$. 
 \end{definition}
+
+
+\begin{formula}
+    Potforlio at the end of investment periods: 
+    \[ B = A + C + I \]
+\end{formula}
+
+
+
 \begin{comments}
     Key terms: 
     \begin{itemize}
@@ -367,9 +380,11 @@ AV = n + i(I_s)_{\angl{n}j} = n + i[\frac{s_{\angl{n+1}j} - (n+1)}{j}] \\
     5. $I = iA + \sum_{0\leq t \leq1}^{} c_t [(1-t)i] = i[A + \sum_{0\leq t \leq1}^{} c_t (1-t)]$ then $i = \frac{I}{A + \sum_{0\leq t \leq1}^{} c_t (1-t)}$\\
 \end{comments}
 
+
 \begin{formula}
-    \[ i \approx \frac{I}{A + \sum_{0\leq t \leq1}^{} c_t (1-t)} = \frac{\text{Interest earned}}{\text{Exposure}}\]
-    The approximation is good when each contribution $c_t$ is small compared to the amount $A$. 
+    (Exposure)
+    \[ A + \sum_{0\leq t \leq1}^{} c_t (1-t) \]
+    Exposure is as a weighted sum of how much money was active in the fund and for how long. 
 \end{formula}
 
 \begin{comments}
@@ -382,11 +397,6 @@ AV = n + i(I_s)_{\angl{n}j} = n + i[\frac{s_{\angl{n+1}j} - (n+1)}{j}] \\
     \end{itemize}
 \end{comments}
 
-\begin{formula}
-    (Exposure)
-    \[ A + \sum_{0\leq t \leq1}^{} c_t (1-t) \]
-    Exposure is as a weighted sum of how much money was active in the fund and for how long. 
-\end{formula}
 
 \begin{example}
     At the beginning of a year, an investment fund was established with an initial deposit of \$3,000.
@@ -438,3 +448,33 @@ AV = n + i(I_s)_{\angl{n}j} = n + i[\frac{s_{\angl{n+1}j} - (n+1)}{j}] \\
     We call $i$ the \textbf{time-weighted rate of return.}
 
 \end{comments}
+
+\section{TWR and DWR}
+\begin{comments}
+    Example scenario: 
+    \begin{itemize}
+        \item Year 1: Spend \$1000 to buy 1000 shares at \$1
+        \item Year 2: Spend \$2000 to buy 1000 shares at \$2
+        \item Year 3: Gain \$2500 to sell 2000 shares at \$1.25
+    \end{itemize}
+
+    \textbf{Dollar-weighted Return Rate} is $-12.77\%$ per year. It reflects your 
+    actual loss from your money decisions (you lost \$500 as you invested 
+    \$3000 but only received \$2500). 
+
+    \textbf{Time-weighted Return Rate} is $11.80\%$ per year. The stock price went up from \$1 to \$2, 
+    then fell to \$1.25, but it was still higher than it started. Therefore, the stock
+    itself had a positive return over time. 
+
+\end{comments}
+
+\begin{definition}
+    Goals of the 2 return methods: 
+    \begin{enumerate}
+        \item \textbf{Dollar-weighted Return Rate}: measures how well the investment performs, excluding
+    investors actions. 
+        \item \textbf{Time-weighted Return Rate}: measures how well the investors did, 
+    including timing and size of money flows and reflecting real experience. 
+    \end{enumerate}
+
+\end{definition}
