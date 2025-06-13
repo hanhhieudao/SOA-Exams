@@ -27,12 +27,92 @@
         \item \textbf{Coupon Rate $r$}: Interest rate applied to the face value and is set by issuer (fixed). 
         
         \item \textbf{Price $P$}: What the investor pays for the bond.
-        \item \textbf{Redemption Value of Bond $C$}: $ F = C $ until otherwise stated. $C$ is the amount the bondholder gets at maturity. 
+        \item \textbf{Redemption Value of Bond $C$}: $ F = C $ until otherwise stated. $C$ is the amount the bondholder gets at maturity. If the bons is called early, $C$ = Call price. 
         \item \textbf{Interest rate per payment period $i$}: Fluctuates based on market. 
         \item \textbf{Number of coupon payments $n$}
     \end{itemize}
 
 \end{formula}
+
+
+%-----------------
+\section{Book Value}
+\begin{definition}
+    \textbf{Book Value} of a bond is the price (=present value) of the bond at any time between the purchase and maturity date.
+    Define $B_k$ is the book value (amortized value) of the bond immediately after the $k^{th}$ payment. 
+\end{definition}
+
+\begin{comments}
+    Prospectively, the book value of a bond is given by: 
+    \[
+    B_k = \text{PV(Remaining Payments)} = Fr \cdot a_{\angl{n-k}i} + C \cdot v^{n-k}
+    \]
+    Retrospectively, the book value of a bond is given by: 
+    \[
+        B_k = \text{FV(P)} - \text{FV(Past Payments)} = P \cdot (1+i)^k - Fr \cdot s_{\angl{k}i}
+    \]
+\end{comments}
+
+
+
+
+%---------------------------------
+\subsection{Principal and Interest}
+\begin{comments}
+\textbf{Principal: }This is the original amount the bond issuer promises to pay back at maturity.
+            It is the face value/par value and investor get this once, at the end of the bond's life.  \\
+            \[
+                \text{Principal = Redemption Value}
+            \]
+\textbf{Interest: } Interest each period is the coupon payment. 
+\[
+\text{Interest each period} = \text{Coupon rate x Face Value}
+\]
+\end{comments}
+
+
+
+
+
+%---------------------
+\subsection{Principal and Interest of Bond in Book Value}
+\begin{comments}
+    In book value calculations, we break coupon into 2 parts: 
+    \begin{itemize}
+        \item \textbf{(Expected) Interest: }Interest earned at yield rate = Yield rate x Book Value
+        \item \textbf{Principal adjustment at the $k^{th}$ coupon }= Coupon - Interest 
+    \end{itemize}
+\end{comments}
+
+\begin{formula}
+    Interest earned at yield rate: 
+    \[
+        I_k = i \cdot B_{k-1}
+    \]  
+    Principal adjustment after the $k^{th}$ coupon payment: 
+    \[
+        P_k = Fr - I_k = B_{k-1} - B_k
+    \]
+    \begin{itemize}
+        \item Premium: $P_k > 0$ Book value decreases 
+        \item Discount: $P_k < 0$ Book value increases
+    \end{itemize}
+\end{formula}
+
+\begin{formula}
+    Total principal adjustment from time k to m: 
+    \[
+        \sum_{j=k+1}^{m} P_{k+1} = B_k - B_m
+    \]
+    Total interest earned from k to m: 
+    \[
+        \sum_{j=k+1}^{m} I_j = \sum C - \sum P_j = (m-k) \cdot C - (B_k - B_m)
+    \]
+\end{formula}
+
+
+
+
 
 %-------------------------------------------
 \section{Bond yield}
@@ -51,19 +131,31 @@
 \begin{formula}
     \textbf{(Nominal Yield)} 
     \[
-        \text{Nominal Yield} = \frac{\text{Annual Coupon}}{\text{Par Value}}
+        \text{Nominal Yield} = \frac{\text{Annual Coupon}}{\text{Par Value}} = \frac{Fr}{F}
     \]  
+    Nominal Yield is the \textbf{annualized} rate of return you earn based on the bond's Face value. 
+    Unit of $r$ is \%/year. 
 \end{formula}
 
 \begin{formula}
     \textbf{(Current Yield)} 
     \[
-        \text{Current Yield} = \frac{\text{Annual Coupon}}{\text{Bond Price}}
+        g = \text{Current Yield} = \frac{\text{Annual Coupon}}{\text{Bond Price}}
     \]  
+    Current yield is the \textbf{annualized} rate you earn based on what you actually paid for the bond. 
 \end{formula}
 
+\begin{comments}
+    \begin{itemize}
+        \item $g > i$: Premium bond
+        \item $g < i$: Discount bond
+    \end{itemize}
+\end{comments}
+
 \begin{formula}
-    \textbf{(Yield to Maturity (YTM))} is the effective return based on what the bond costs today. 
+    You buy a bond at the current market price and holding it to maturity. \textbf{Yield to Maturity} 
+    is the annualized rate of return you expect to have. In other words, it discounts the future cash flows
+    to be equal to the market price of the bond. 
 \end{formula}
 
 %---------------------------------------------
@@ -76,6 +168,56 @@
     \]
 \end{formula}
 
+
+
+%----------------
+\subsection{Base amount formula}
+\begin{formula} {Base amount formula}
+    \[
+        \text{P} = \text{Base} + \text{Adjustment} = Fr + (C - Fr)v^{n}
+    \]
+\end{formula}
+
+
+
+
+
+
+
+%-------------------------
+\subsection{Bonds with Geometric Coupon Payments}
+
+
+\begin{formula}
+    If a bond has a geometrically varying coupons (i.e., the first coupon is X and 
+    each subsequent coupon is (1+k) times the preceding one) with the yield rate $i$, 
+    PV = Price of the bond is: 
+    \begin{align}
+        \text{PV} &= \text{PV}_{\text{Redemption value}} + \text{PV}_{\text{coupon annuity}} \\
+                &= C \cdot v^{t} + X \cdot \frac{1-(\frac{1+k}{1+i})^{n}}{i-k}
+    \end{align}
+\end{formula}
+
+%-------------------
+\subsection{Bonds with Different Frequencies for Coupon and Yield rates}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{} >{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{5cm} >{\raggedright\arraybackslash}p{7cm} @{}}
+\textbf{Case} & \textbf{Formula} & \textbf{Interpretation} \\
+\midrule
+$n < k$ (Few coupons, many yield periods) & 
+\( P = Fr \cdot a_{\overline{n}|}^{(k)} + C v^n \) & 
+Coupon rate is compounded less frequently. Total payment periods is $nk$.\\
+\midrule
+$n > k$ (Frequent coupons, fewer yield periods) & 
+\( P = \frac{Fr \cdot a_{\overline{n}|}}{s_k} + C v^n \) & 
+Coupons occur more frequently. Total payment periods is $n/k$ \\
+\midrule
+$n = k$ & \( P = Fr \cdot a_{\overline{n}} + C v^n \) & Payments match discounting intervals. \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 
 
@@ -163,4 +305,61 @@ Since $i=r$ (bond sold at par), the equation becomes
     \[
     \text{MacD} = \ddot{a}_{\angl{n}i}
     \]
+\end{formula}
+
+
+
+
+%-----------------
+\section{Callable Bond}
+\begin{definition}
+    Bonds that can be redeemed by the issuer before maturity. T
+    he issuer decides when to call, often to save on interest costs.
+\end{definition}
+
+\begin{comments}
+    Callable bonds can be redeemed early by the issuer. The issuer decides when to call (redeem) the bond, but you, 
+    the investor, don’t get to choose. So when you're trying to figure out how much to pay for a callable bond, you must assume the issuer 
+    will act in their own best interest, not yours.
+
+\end{comments}
+
+\begin{tabular}{>{\bfseries}l p{3cm} p{3.5cm} p{4cm}}
+\toprule
+\textbf{Case} & \textbf{What's Happening} & \textbf{What You Assume as Investor} & \textbf{Why?} \\
+\midrule
+\textbf{Premium Bond} & Coupon rate $>$ yield rate & Bond is called \textbf{early} & Issuer wants to stop overpaying and call the bond at the first possible date\\
+\textbf{Discount Bond} & Coupon rate $<$ yield rate & Bond is called \textbf{late} & Issuer benefits from paying low coupons longer and hold the bond until the final maturity date \\
+\bottomrule
+\end{tabular}
+
+
+\begin{comments}
+When you're buying a callable bond, you already know:
+\begin{itemize}
+    \item Call price = Redemption value 
+    \item Call schedule (when it can be called)
+    \item Coupon rate 
+    \item Market yield you want (your target of return)
+\end{itemize}
+So you can \textbf{adjust the purchase price you're willing to pay}. 
+\end{comments}
+
+
+\subsection{Endpoints shortcut}
+
+\begin{comments}
+    For callable bond, all possible call dates are evaluated when investor consier the purchase price. 
+    You only need to eavluate the bond price at the endpoints of the time interval in which 
+    the bond is possibly called. 
+\end{comments}
+
+\begin{formula}
+    \textbf{(Lowest yield - worst case)} at the endpoints:  You get lowest yield and this is the worst vase
+    when the callable bond is called early" 
+    \begin{itemize}
+        \item Earliest call on left-endpoint - Premium bond
+        \item Earliest call on right-endpoint - Discount bond
+    \end{itemize}
+
 \end{formula}

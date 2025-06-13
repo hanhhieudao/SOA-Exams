@@ -24,6 +24,25 @@
 
 
 
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Simple Interest}
+    \begin{itemize}[leftmargin=*]
+        \item Accumulation function: $a(t) = 1 + it$
+        \item Growth type: Linear
+    \end{itemize}
+
+    \item \textbf{Compound Interest}
+    \begin{itemize}[leftmargin=*]
+        \item Accumulation function: $a(t) = (1 + i)^t$
+        \item Growth type: Exponential
+    \end{itemize}
+
+    \item \textbf{Continuous (Force of Interest)}
+    \begin{itemize}[leftmargin=*]
+        \item Accumulation function: $a(t) = e^{\delta t}$
+        \item Growth type: Exponential (Smoothest)
+    \end{itemize}
+\end{itemize}
 
 
 
@@ -36,35 +55,96 @@
 \section{Force of Interest}
 
 \begin{definition}
-    The \textbf{force of interest}, denoted by  $\delta$, measures how fast monet grows in a particular instant in time.
-    By definition, the \textbf{force of interest} at time t, denoted by  $\delta(t)$, is: 
-    \[
-            \delta(t) = \frac{A'(t)}{A(t)}
-    \]
-
-    or it is also called as \textbf{instantaneous rate of growth} of the investment. 
+    The \textbf{force of interest}, denoted by  $\delta$, measures how fast money grows in any specific time.
 \end{definition}
 
 \subsection{Constant Force of Interest}
-\begin{formula}
-    When $\delta$ is constant, then $\delta(t)$ = $\delta$. 
-    Continuous compounding is 
+
+\begin{definition}
+    Start with a nominal compound interest $i^{(m)}$ converted $m$ times per period. Let $m$ go to infinity, 
+    money is compounded \textbf{continuously}: 
     \[
-        A(t) = A(0) \cdot e^{\delta t}
+            \delta(t) = \lim_{m \to \infty} i^{(m)}
     \]
+    When using \textbf{compound interest}, $\delta_t$ is constant. 
+\end{definition}
+
+\begin{formula}
+    The initial amount of money grows exponentially with a constant rate $\delta$. 
+    \[
+        A(t)  = A(0) \cdot a(t) = A(0) \cdot e^{\delta t}
+    \]
+
+    where accumulation function $a(t) = e^{\delta t}$.
 \end{formula}
 
 \begin{formula}
-    Effective interest rate and force of interest:
+    To convert annual effective rate to \textbf{constant Force of Interest}, and conversely: 
     \[
+        \delta = \lim_{m \to \infty} i^{(m)} = \ln(1+i)
+    \]
+
+        \[
         i = e^{\delta} - 1   
     \]
 
-    and 
-    \[
-        \delta = \text{ln}(1+i)
-    \]
+    \begin{itemize}
+        \item $i$ = effective annual interest rate
+        \item $i^{(m)}$ = nominal rate compounded m times a year
+    \end{itemize}
+    
 \end{formula}
+
+
+
+\begin{formula}
+    When $\delta$ is constant, then $\delta(t)$ = $\delta$ for all $t$. \\
+    \[
+        \text{FV} = A(t) = A(0) \cdot e^{\delta t}
+    \]
+
+    \[
+        \text{PV} = A(t) \cdot e^{-\delta t}
+    \]
+    where accumulation function $a(t) = e^{\delta t} = (1+i)^t$. 
+    
+\end{formula}
+
+
+
+%-------------------------------
+\subsection{Varying Force of Interest}
+\begin{definition}
+    Force of Interest which \textbf{changes over time} is a variable and a function of time $\delta(t)=\delta_t$. 
+    \[
+        \delta_t = \frac{a'(t)}{a(t)} = \frac{A'(t)}{A(t)}
+    \]
+
+    Given $\delta_t$, we can recover accumulation function $a(t)$. 
+    \[
+        a(t) = e^{\int_{0}^{t}\delta_t dr}
+    \]  
+\end{definition}
+
+\begin{formula}
+    (Present value and Future value)
+    \[
+    \text{FV} = A(t) = A(0) \cdot e^{\int_{0}^{t}\delta_t dr}
+    \]
+    \[
+    \text{PV} = A(0) = A(t) \cdot e^{-\int_{0}^{t}\delta_t dr}
+    \]
+
+\end{formula}
+
+\begin{comments}
+    The amount of interest earned over $n$ periods is 
+    \[
+    A(n) - A(0) = I_1 + I_1 + \dots + I_n = \int_{0}^{n}A'(t)dt = \int_{0}^{n}A(t) \delta_t dt
+    \]
+\end{comments}
+
+
 
 %-------------------------------
 \section{Present value}
@@ -117,17 +197,17 @@
 \subsection{Present Value}
 
 \begin{definition}
-    Present Value with compound interest: 
+    (\textbf{Lump Sum}) Present Value of an Lump sum amount with compound interest: 
     \[
-        \text{PV} = \frac{\text{FV}}{(1+i)^{t}} = \text{FV} \cdot v^t
+        \text{PV} = \frac{\text{FV}}{(1+i)^{t}} = \text{FV} \cdot v^t = \text{FV} \cdot \ \frac{1}{a(t)}
     \]  
 \end{definition}
    
 
 \begin{definition}
-    Present Value with compound interest and cash flows: 
+    (\textbf{Cash Flow}) Present Value of a cash flow: 
     \[
-        \text{PV}_{t=0} = \sum_{k=1}^{n} C_k v(t_k)
+        \text{PV}_{t=0} = \sum_{k=1}^{n} C_k (a(t_k))^{-1}
     \]
 \end{definition}
 
@@ -144,3 +224,13 @@
         \item $\text{FV}_{t=n}$: future value at time $t=n$
     \end{itemize}
 \end{definition}
+
+\begin{formula}
+    (\textbf{Accumulation factor and Deposits at Different time})  of \$k is deposited
+    at time $s$, and you want to know its value at time $t>s$, use
+    \[
+        \text{Future Value} = k \cdot \frac{a(t)}{a(s)}
+    \]
+    where $\frac{a(t)}{a(s)}$ is an accumulation factor. 
+\end{formula}
+

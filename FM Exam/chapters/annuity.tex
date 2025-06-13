@@ -585,13 +585,24 @@ The FV of an annuity-due is:
 \end{comments}
 
 \begin{formula}
-  If \textbf{nominal rate $i_{\text{nom}}$} is compounded $n$ times per year, then: 
+  If \textbf{nominal rate $i_{\text{nom}}$} is compounded $m$ times per year, then: 
   \[
-    i_{\text{eff}} + 1 = (1+\frac{i_{\text{nom}}}{n}) 
+    i_{\text{eff}} + 1 = (1+\frac{i_{\text{nom}}^{(m)}}{m})^{mn}
   \]
 \end{formula}
 
-
+\begin{formula}
+  (Accumulated Value with Nominal interest rate)
+  \[
+    \text{AV} = P \cdot (1 + \frac{i^{(m)}}{m})^{mn}
+  \]
+\end{formula}
+\begin{formula}
+(Present Value with Nominal interest rate)
+\[
+    \text{PV} = \frac{P}{(1+\frac{i^{(m)}}{m})^{mn}}
+\]
+\end{formula}
 
 
 
@@ -622,3 +633,44 @@ The FV of an annuity-due is:
   Relationship: $\ddot{a}_{\angl{\infty}} = 1 + \text{a}_{\angl{\infty}}$
 \end{formula}
 
+%--------------------
+\section{Continuous Annuity}
+\begin{definition}
+  A continuous annuity has: 
+\begin{itemize}
+  \item A finite term 
+  \item An infinite frequency of payments
+\end{itemize}
+In other words, each interest conversion period has a total payment of $\$1$ at periodic interest 
+rate $i$. Each period has m intervals of payment, where m goes to infinity. Payments are made continuously. 
+Total amount paid during each period is: 
+\[
+  \int_{k-1}^{k} dt = [t]^{k}_{k-1} = \$1
+\]
+\end{definition}
+
+
+
+\subsection{Level continuous annuity}
+\begin{formula}
+  (Present Value of an annuity payable continuously)
+  For the annuity with n interest conversion periods, each period has a total amount of $\$1$. The present value is: 
+  \[
+      \bar{a}_{\angl{n}} = \int_{0}^{n} v^t dt
+  \]
+\end{formula}
+
+\subsection{Continuous annuity with Constant force of interest}
+\begin{formula} (Present Value)
+    \[
+      \bar{a}_{\angl{n}} = \lim_{m\to\infty} a_{\angl{n}} = \frac{1-v^n}{\delta} = \frac{1 - e^{-n \delta}}{\delta} = \frac{i}{\delta}a_{\angl{n}}
+    \]
+\end{formula}
+
+
+\subsection{Continuous annuity with Variable force of interest}
+\begin{formula} (Present Value)
+  \[
+      \bar{a}_{\angl{n}} = \int_{0}^{n} e^{-\int_{0}^{t}\delta_r dr}dt
+  \]
+\end{formula}
